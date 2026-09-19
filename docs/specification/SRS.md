@@ -1,5 +1,7 @@
 # Software Requirements Specification (SRS) - SorokChat Messenger (Frontend)
 
+> Цей документ описує цільовий стан frontend-системи (target design), а не поточний стан реалізації в src. Поточна реалізація може відрізнятися від описаного стану до досягнення MVP.
+
 **Тип за ISO 15289:2019:** Specification
 **Стандарт:** ISO/IEC/IEEE 29148:2018
 
