@@ -45,17 +45,17 @@ graph TD
 sequenceDiagram
     participant U as User
     participant C as Client (WebCrypto)
-    participant S as Server
+    participant D as IndexedDB
     participant R as Recipient
 
     U->>C: Введення тексту
-    C->>C: AES-256-CBC (plaintext, key)
-    C->>C: Обчислення MAC
-    C->>S: {ciphertext, mac} (WSS)
-    S-->>R: {ciphertext, mac}
+    C->>D: Отримання ключа та токена
+    C->>C: AES-256-CBC encrypt (plaintext, key)
+    C->>C: HMAC-SHA-256 (ciphertext, key)
+    C->>R: {ciphertext, mac}
     R->>R: Перевірка MAC
     alt MAC валідний
-        R->>R: AES-CBC decrypt
+        R->>R: AES-256-CBC decrypt
         R->>U: Відображення
     else MAC невалідний
         R->>U: Попередження про цілісність
@@ -66,12 +66,12 @@ sequenceDiagram
 
 | Загроза | Приклад | Контрзахід |
 |---------|---------|------------|
-| Spoofing | Підміна користувача | 2FA, TLS, цифрові підписи |
-| Tampering | Зміна повідомлення в дорозі | MAC (HMAC-SHA-256 / GCM) |
+| Spoofing | Підміна користувача | 2FA, цифрові підписи |
+| Tampering | Зміна повідомлення в дорозі | MAC (HMAC-SHA-256) |
 | Repudiation | Заперечення відправки | Цифровий підпис |
-| Information disclosure | Читання сервером | E2E (AES-256-GCM) |
-| Denial of service | Flood запитами | Rate limiting, WAF |
-| Elevation of privilege | Ескалація прав | RBAC, перевірка на сервері |
+| Information disclosure | Читання даних в браузері | E2E (AES-256-CBC), зберігання токенів і ключів в IndexedDB |
+| Denial of service | Flood запитами | Rate limiting, UI-обмеження |
+| Elevation of privilege | Ескалація прав | RBAC, перевірка прав у UI |
 
 ### Життєвий цикл ключа
 
@@ -139,35 +139,34 @@ stateDiagram-v2
 
 | Сховище | Що зберігається | Термін |
 |---------|-----------------|--------|
-| IndexedDB | Повідомлення (ciphertext), чати | До logout |
-| localStorage | Налаштування UI, мова | Постійно
-| memory (in-tab) | Розшифровані ключі | До закриття вкладки |
-| httpOnly cookie | Refresh token | 7 діб |
+| IndexedDB | Access token, ключі шифрування, повідомлення (ciphertext), чати, офлайн-черга | До logout |
+| HttpOnly secure cookie | Refresh token | До expiry / logout |
+| localStorage | Налаштування UI, мова | Постійно |
+| memory (in-tab) | Тимчасові розшифровані ключі/сесійні дані | До закриття вкладки |
 
 ## View-04: Подання розгортання (VP-04)
+
+> Цей документ описує лише frontend-систему. Backend та інфраструктура розглядаються як зовнішні інтеграції, а не як внутрішній компонент фронтенду.
 
 ### Deployment Diagram
 ```mermaid
 graph LR
     Browser[Browser SPA<br/>Angular bundle] -->|HTTPS| CDN[CDN<br/>static]
-    Browser -->|WSS| WS[WebSocket server]
-    Browser -->|HTTPS| API[REST API]
-    API --> DB[(DB)]
-    WS --> DB
-    API --> Auth[Auth service]
+    Browser -->|HTTPS| External[External backend services]
+    Browser -->|WSS| External
 ```
 
-### Вимоги до середовиша
+### Вимоги до середовища
 
-| Компонент | Технологія | Примітка | 
+| Компонент | Технологія | Примітка |
 |-----------|------------|----------|
 | SPA bundle | Static hosting / CDN | gzip + brotli |
-| REST API | Node (Nestjs) | TLS 1.3 |
-| WebSocket | Окремий сервіс | Horizontal scaling |
-| DB | PostgreSQL (метадані) | Без plaintext-повідомлень |
+| Browser storage | IndexedDB | Токени, ключі, офлайн-дані |
+| External integration | Backend services | Розглядається як зовнішній зв'язок, не вхід у scope |
 
 ### Мережеві вимоги
 
-- Усі з'єднання — HTTPS/WSS.
+- Усі зовнішні з'єднання — HTTPS/WSS.
 - HSTS enabled.
 - CSP: заборона unsafe-inline, eval.
+- У frontend описі немає жодного внутрішнього бекенд-компонента; усі сервіси є зовнішньою інтеграцією.

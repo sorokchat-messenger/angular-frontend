@@ -1,6 +1,6 @@
 # Traceability Report - SorokChat Messenger
 
-**Тип за ISO 15289:2019:** Report
+**Тип інформаційного елемента за ISO/IEC/IEEE 15289:2019:** Report
 
 **Версія:** 1.0
 
