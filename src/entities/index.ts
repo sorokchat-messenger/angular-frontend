@@ -1,1 +1,1 @@
-export { AuthorizationService } from './authorization';
+export { AuthorizationService, PROFILE_KEY, injectProfile, injectAuthenticated } from './authorization';
