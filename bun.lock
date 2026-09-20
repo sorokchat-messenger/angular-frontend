@@ -12,6 +12,7 @@
         "@angular/platform-browser": "^22.1.0",
         "@angular/router": "^22.1.0",
         "@angular/service-worker": "^22.1.0",
+        "@ngx-pwa/local-storage": "^22.0.0",
         "@sorokchat-messenger/core": "^1.0.0",
         "rxjs": "~7.8.0",
         "tslib": "^2.3.0",
@@ -283,6 +284,8 @@
     "@napi-rs/nice-win32-x64-msvc": ["@napi-rs/nice-win32-x64-msvc@1.1.1", "", { "os": "win32", "cpu": "x64" }, "sha512-vB+4G/jBQCAh0jelMTY3+kgFy00Hlx2f2/1zjMoH821IbplbWZOkLiTYXQkygNTzQJTq5cvwBDgn2ppHD+bglQ=="],
 
     "@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@1.2.4", "", { "dependencies": { "@tybys/wasm-util": "^0.10.3" }, "peerDependencies": { "@emnapi/core": "^1.7.1 || ^2.0.0-alpha.4", "@emnapi/runtime": "^1.7.1 || ^2.0.0-alpha.4" } }, "sha512-AJxoUD2/15ESHbvpcyjU274nsAPLuOtPHCk0vKJM5pj//Fg/B1FXNWjPnXTT9PymCYYiHo4zPj0ZomXBKhoy7g=="],
+
+    "@ngx-pwa/local-storage": ["@ngx-pwa/local-storage@22.0.0", "", { "dependencies": { "tslib": "^2.5.0" }, "peerDependencies": { "@angular/common": "^22.0.0", "@angular/core": "^22.0.0", "rxjs": "^7.6.0" } }, "sha512-k5ZamLx8YTjAkvS6x+RHYBBGbcXrR0EnvI6Xgxaf29yKcwXXA61iQ8VRpFXeLY+0B/qT/Su2auXlJ8RLaIrG9g=="],
 
     "@oxc-parser/binding-android-arm-eabi": ["@oxc-parser/binding-android-arm-eabi@0.142.0", "", { "os": "android", "cpu": "arm" }, "sha512-ZiRGDutGsv1G6bL/ozy/koC0Sv39T1DqyoC4KD1DOy9ZoACm1O5UWhEK2c02Qdk+4lfLVkvFa/mQ0fm/4h1BtQ=="],
 
