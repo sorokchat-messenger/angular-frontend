@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-authorization-layout',
-  imports: [],
+  imports: [RouterOutlet],
   templateUrl: "./authorization-layout.html",
   styleUrl: './authorization-layout.scss',
 })

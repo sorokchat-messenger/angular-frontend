@@ -5,5 +5,5 @@ export type Page = {
     title: string;
     path: string;
     loadComponent: () => Promise<Type<unknown>>;
-    protection: Protection;
+    protection?: Protection;
 }
