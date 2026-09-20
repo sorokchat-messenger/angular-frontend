@@ -1,7 +1,9 @@
+import { type IStorage, STORAGE_TOKEN } from "@/shared";
 import { HttpClient } from "@angular/common/http";
 import { inject, Service } from "@angular/core";
 import { AUTHORIZATION_CONTROLLER, type UserPayload, type AuthorizedPayload, type LoginPayload, type RegisterPayload } from '@sorokchat-messenger/contracts';
 import { lastValueFrom } from "rxjs";
+import { AccessTokenStorage } from "../storage";
 
 @Service()
 export class AuthorizationService {
@@ -13,6 +15,8 @@ export class AuthorizationService {
     private static readonly REFRESH_TOKENS_URL: string = `${AuthorizationService.CONTROLLER_URL}/${AUTHORIZATION_CONTROLLER.REFRESH_TOKENS}`;
 
     private readonly client: HttpClient = inject(HttpClient);
+    private readonly storage: IStorage = inject(STORAGE_TOKEN);
+    private readonly accessTokenStorage: AccessTokenStorage = inject(AccessTokenStorage);
 
     public async register(payload: RegisterPayload): Promise<void> {
         const { accessToken } = await lastValueFrom(this.client.post<AuthorizedPayload>(AuthorizationService.REGISTER_URL, payload));
@@ -39,8 +43,10 @@ export class AuthorizationService {
     }
 
     private async authorize(accessToken: string): Promise<void> {
-
+        return await this.accessTokenStorage.setToken(accessToken);
     }
 
-    private async deauthorize(): Promise<void> { }
+    private async deauthorize(): Promise<void> {
+        await this.storage.clear();
+    }
 } 
