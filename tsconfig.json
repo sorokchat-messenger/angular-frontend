@@ -15,12 +15,14 @@
     "module": "preserve",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "strict": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
   },
   "files": [],
   "references": [

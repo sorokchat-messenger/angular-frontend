@@ -1,0 +1,20 @@
+<form (submit)="register($event)" class="form">
+    <h1 class="title">Реєстрація</h1>
+    <div class="field">
+        <label [htmlFor]="form.login().name()" class="label">Унікальне ім'я</label>
+        <input [id]="form.login().name()" class="input" type="text" [formField]="form.login"
+            placeholder="Ваше унікальне ім'я..." />
+    </div>
+    <div class="field">
+        <label [htmlFor]="form.password().name()" class="label">Пароль</label>
+        <input [id]="form.password().name()" class="input" type="password" [formField]="form.password"
+            placeholder="Ваш пароль..." />
+    </div>
+    <div class="field">
+        <label [htmlFor]="form.displayName().name()" class="label">Видиме ім'я</label>
+        <input [id]="form.displayName().name()" class="input" type="text" [formField]="form.displayName"
+            placeholder="Ваше видиме ім'я..." />
+    </div>
+    <button type="submit" class="button">Зареєструватися</button>
+    <div class="guide">Якщо вже зареєстровані, <a class="accent" [routerLink]="loginPath">увійдіть</a>.</div>
+</form>

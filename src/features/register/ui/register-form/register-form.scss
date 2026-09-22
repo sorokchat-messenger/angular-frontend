@@ -1,0 +1,89 @@
+@use "@/shared/styles/colors.scss" as *;
+
+:host {
+  display: contents;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 561px;
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 400;
+  color: $primaryTextColor;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .input {
+    width: 100%;
+    border: 1px solid $borderColor;
+    background-color: $secondaryBackgroundColor;
+    border-radius: 10px;
+    padding: 10px;
+    &, &::placeholder {
+      font-size: 14px;
+      font-weight: 400;
+      color: $iconColor;
+      transition: .3s all ease;
+    }
+    &:focus-visible, &:focus-within, &:hover {
+      outline: none;
+      border-color: $primaryTextColor;
+      &, &::placeholder {
+        color: $primaryTextColor;
+      }
+    }
+  }
+  .label {
+    color: $primaryTextColor;
+    font-size: 20px;
+    font-weight: 400;
+  }
+}
+
+.button {
+  transition: .3s all ease;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  &[type="submit"] {
+    background-color: $buttonSubmitBackroundColor;
+    color: $primaryTextColor;
+    &:hover {
+      background-color: $buttonSubmitHoverBackroundColor;
+    }
+  }
+  &:disabled {
+    cursor: not-allowed;
+    &, &:hover {
+      background-color: $buttonDisabledBackroundColor;
+    }
+  }
+}
+
+.guide {
+  font-size: 20px;
+  font-weight: 400;
+  color: $primaryTextColor;
+  text-align: center;
+}
+
+.accent {
+  color: $accentColor;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
