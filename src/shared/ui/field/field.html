@@ -1,0 +1,10 @@
+<div class="field">
+    <label [htmlFor]="name()" class="label">{{label()}}</label>
+    <input [id]="name()" class="input" type="text" [formField]="formField()" [placeholder]="placeholder()"
+        [class.error]="hasErrors()" />
+    <ul class="errors">
+        @for(error of field().errors(); track error.message) {
+        <li>{{error.message}}</li>
+        }
+    </ul>
+</div>
