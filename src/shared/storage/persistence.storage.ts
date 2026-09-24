@@ -13,7 +13,7 @@ export class PersistenceStorage implements IStorage {
     }
 
     public get<T>(key: string): Signal<T | null | undefined> {
-        return toSignal(this.storage.get<T | undefined | null>(key, { type: 'string' }));
+        return toSignal(this.storage.get<T | undefined | null>(key, { type: 'string' }), { initialValue: undefined });
     }
 
     public async delete(key: string): Promise<void> {

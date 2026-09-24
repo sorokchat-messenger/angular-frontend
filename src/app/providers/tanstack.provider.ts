@@ -9,7 +9,7 @@ export const TANSTACK_PROVIDER: Provider = provideTanStackQuery(new QueryClient(
             refetchOnWindowFocus: false
         },
         mutations: {
-            retry: true
+            retry: false
         }
     }
 }));

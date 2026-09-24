@@ -1,1 +1,8 @@
-export { AuthorizationService, PROFILE_KEY, injectProfile, injectIsAuthenticated } from './authorization';
+export {
+    AuthorizationService,
+    PROFILE_KEY,
+    injectProfile,
+    injectIsAuthenticated,
+    accessTokenInterceptor,
+    refreshTokensInterceptor
+} from './authorization';
