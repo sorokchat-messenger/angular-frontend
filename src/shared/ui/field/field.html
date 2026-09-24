@@ -1,12 +1,5 @@
 <div class="field">
-    <label [htmlFor]="name()" class="label">{{label()}}</label>
-    <input [id]="name()" class="input" [type]="type()" [formField]="formField()" [placeholder]="placeholder()"
-        [class.error]="hasErrors()" />
-    @if (hasErrors()) {
-    <ul class="errors">
-        @for(error of field().errors(); track error.message) {
-        <li>{{error.message}}</li>
-        }
-    </ul>
-    }
+    <app-field-label [inputId]="name()">{{label()}}</app-field-label>
+    <app-input [field]="field()" [hasErrors]="hasErrors()" [type]="type()" [placeholder]="placeholder()" />
+    <app-field-errors [errors]="field().errors()" />
 </div>

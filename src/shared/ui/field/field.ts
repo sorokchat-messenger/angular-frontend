@@ -1,10 +1,13 @@
 import { type InputType } from '../../types';
 import { ChangeDetectionStrategy, Component, computed, input, type Signal } from '@angular/core';
-import { FormField, type FieldState, type Field as FieldType } from '@angular/forms/signals';
+import { type FieldState, type Field as FieldType } from '@angular/forms/signals';
+import { Input } from '../input';
+import { FieldErrors } from '../field-errors';
+import { FieldLabel } from '../field-label';
 
 @Component({
   selector: 'app-field',
-  imports: [FormField],
+  imports: [Input, FieldErrors, FieldLabel],
   templateUrl: './field.html',
   styleUrl: './field.scss',
   changeDetection: ChangeDetectionStrategy.Eager,

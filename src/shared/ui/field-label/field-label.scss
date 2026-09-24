@@ -1,0 +1,11 @@
+@use "@/shared/styles/colors.scss" as *;
+
+:host {
+  display: contents;
+}
+
+.label {
+    color: $primaryTextColor;
+    font-size: 20px;
+    font-weight: 400;
+  }

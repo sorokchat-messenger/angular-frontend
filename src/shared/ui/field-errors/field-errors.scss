@@ -1,0 +1,13 @@
+@use "@/shared/styles/colors.scss" as *;
+
+:host {
+  display: contents;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  color: $dangerColor;
+  list-style: none;
+  gap: 5px;
+}

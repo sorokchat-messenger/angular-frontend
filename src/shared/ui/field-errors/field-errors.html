@@ -1,0 +1,7 @@
+@if (hasErrors()) {
+<ul class="errors">
+    @for(error of errors(); track error.message) {
+    <li>{{error.message}}</li>
+    }
+</ul>
+}
