@@ -13,7 +13,7 @@
         "@angular/router": "^22.1.0",
         "@angular/service-worker": "^22.1.0",
         "@ngx-pwa/local-storage": "^22.0.0",
-        "@sorokchat-messenger/contracts": "^1.0.18",
+        "@sorokchat-messenger/contracts": "^1.0.19",
         "@sorokchat-messenger/core": "^1.0.0",
         "@tanstack/angular-query-experimental": "^5.103.1",
         "rxjs": "~7.8.0",
@@ -436,7 +436,7 @@
 
     "@solid-primitives/utils": ["@solid-primitives/utils@6.4.1", "", { "peerDependencies": { "solid-js": "^1.6.12" } }, "sha512-ISSB5QX1qP2ynrheIpYwc4oKR5Ny4siNuUyf1qZniy+Il+p/PtDB0QK1Dnle8noiHpwRD3gpPdubOC3qI/Zamg=="],
 
-    "@sorokchat-messenger/contracts": ["@sorokchat-messenger/contracts@1.0.18", "", { "dependencies": { "@vitest/coverage-v8": "^5.0.1", "reflect-metadata": "^0.2.2", "vitest": "^5.0.1", "zod": "^4.5.4" } }, "sha512-EGnkuFGbY0X13iu1YT2nNprkX7f3rLbk2WKGzPQysq/8OcHFWKE3FhCMDlEbmpE/kvvKMiSYdieX2Z0XCAneBg=="],
+    "@sorokchat-messenger/contracts": ["@sorokchat-messenger/contracts@1.0.19", "", { "dependencies": { "@vitest/coverage-v8": "^5.0.1", "reflect-metadata": "^0.2.2", "vitest": "^5.0.1", "zod": "^4.5.4" } }, "sha512-VkBjsMlJ8PTy3WonfbbF49MpEYFJSvC0jazdo5rTUnVW9Cxtocr62nxOIyEKcYg8PWvh/ky8FMwvBNWnTCJg9g=="],
 
     "@sorokchat-messenger/core": ["@sorokchat-messenger/core@1.0.0", "", { "peerDependencies": { "prettier": "^3.9.6" } }, "sha512-DxKnCJ4u4TEpU25DAiuXOdY3miI8WelEzxlvCKZJbhdhwXtdqfsnl6W8dRp3HQpiE3xDZqWImkB8TmiBN31/sQ=="],
 

@@ -1,5 +1,6 @@
+import { withoutEmpty } from '@/shared';
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-import { validate, type FieldTree } from '@angular/forms/signals';
+import { type FieldTree } from '@angular/forms/signals';
 
 @Component({
   selector: 'app-form',
@@ -17,7 +18,7 @@ export class Form<T> {
     const formSignal = this.form();
     const form = formSignal();
     if (form.valid()) {
-      this.send.emit(form.value());
+      this.send.emit(withoutEmpty<T>(form.value() as Required<T>));
     }
   }
 }
