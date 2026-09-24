@@ -21,7 +21,7 @@ export class Field {
 
   public get hasErrors(): Signal<boolean> {
     const field = this.field();
-    return computed(() => field.dirty() && field.invalid());
+    return computed(() => field.invalid());
   }
 
   public get name(): Signal<string> {

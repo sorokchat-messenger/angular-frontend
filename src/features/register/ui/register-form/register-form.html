@@ -1,4 +1,4 @@
-<app-form [form]="form" (send)="register($event)" class="form">
+<app-form [form]="form" (send)="register($event)">
     <h1 class="title">Реєстрація</h1>
     <app-field [field]="form.login()" label="Унікальне ім'я" placeholder="Ваше унікальне ім'я..." />
     <app-field [field]="form.password()" type="password" label="Пароль" placeholder="Ваш пароль..." />
