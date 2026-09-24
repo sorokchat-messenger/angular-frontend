@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
-import { ValidationError } from '@angular/forms/signals';
+import { type ValidationError } from '@angular/forms/signals';
 
 @Component({
   selector: 'app-field-errors',

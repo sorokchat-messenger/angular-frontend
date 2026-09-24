@@ -28,6 +28,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*.json",
+                "input": "node_modules/@sorokchat-messenger/contracts/i18n",
+                "output": "assets/i18n"
               }
             ],
             "styles": ["src/app/styles/styles.scss"]

@@ -7,6 +7,7 @@ import { CACHE_PROVIDER } from './cache.provider';
 import { PERSISTENCE_STORAGE_PROVIDER } from './persistence.provider';
 import { STORAGE_PROVIDER } from './storage.provider';
 import { TANSTACK_PROVIDER } from './tanstack.provider';
+import { TRANSLATION_PROVIDER } from './translation.provider';
 
 export const PROVIDERS: (Provider | EnvironmentProviders)[] = [
   BROWSER_GLOBAL_ERROR_LISTENER_PROVIDER,
@@ -16,5 +17,6 @@ export const PROVIDERS: (Provider | EnvironmentProviders)[] = [
   CACHE_PROVIDER,
   PERSISTENCE_STORAGE_PROVIDER,
   STORAGE_PROVIDER,
-  TANSTACK_PROVIDER
+  TANSTACK_PROVIDER,
+  TRANSLATION_PROVIDER
 ];
