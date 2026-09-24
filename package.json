@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "copy:i18n": "rm -rf public/i18n && cpy \"node_modules/@sorokchat-messenger/contracts/i18n/**/*.json\" public/i18n --parents",
-    "start": "bun run copy:i18n && ng serve",
+    "start": "bun run copy:i18n && ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

@@ -1,4 +1,4 @@
-import { type IStorage, STORAGE_TOKEN } from "@/shared";
+import { BACKEND_API_PATH, type IStorage, STORAGE_TOKEN } from "@/shared";
 import { HttpClient } from "@angular/common/http";
 import { inject, Service } from "@angular/core";
 import { AUTHORIZATION_CONTROLLER, type UserPayload, type AuthorizedPayload, type LoginPayload, type RegisterPayload } from '@sorokchat-messenger/contracts';
@@ -7,7 +7,7 @@ import { AccessTokenStorage } from "../storage";
 
 @Service()
 export class AuthorizationService {
-    private static readonly CONTROLLER_URL: string = `http://localhost:8080/${AUTHORIZATION_CONTROLLER.NAME}`;
+    private static readonly CONTROLLER_URL: string = `${BACKEND_API_PATH}/${AUTHORIZATION_CONTROLLER.NAME}`;
     private static readonly REGISTER_URL: string = `${AuthorizationService.CONTROLLER_URL}/${AUTHORIZATION_CONTROLLER.REGISTER}`;
     private static readonly LOGIN_URL: string = `${AuthorizationService.CONTROLLER_URL}/${AUTHORIZATION_CONTROLLER.LOGIN}`;
     private static readonly PROFILE_URL: string = `${AuthorizationService.CONTROLLER_URL}/${AUTHORIZATION_CONTROLLER.PROFILE}`;
