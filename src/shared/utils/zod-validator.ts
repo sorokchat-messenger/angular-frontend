@@ -28,8 +28,6 @@ export function withZod<T>(schema: ZodType<T>) {
         validateTree(path, (context) => {
             const rawValue = context.value() as Record<string, unknown>;
             const transformedValue = withoutEmpty(rawValue);
-            console.log(transformedValue);
-
             const result = schema.safeParse(transformedValue);
             if (result.success) return null;
             return result.error.issues.map(
