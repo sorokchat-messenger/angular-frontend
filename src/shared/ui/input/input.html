@@ -1,2 +1,7 @@
-<input [id]="name()" class="input" [type]="type()" [formField]="formField()" [placeholder]="placeholder()"
-    [class.error]="hasErrors()" />
+<div class="input-wrapper">
+    <input [id]="name()" class="input" [type]="inputType()" [formField]="formField()" [placeholder]="placeholder()"
+        [class.error]="hasErrors()" />
+    @if (type() === 'password') {
+    <svg class="icon" [lucideIcon]="icon()" (click)="switchType()" />
+    }
+</div>

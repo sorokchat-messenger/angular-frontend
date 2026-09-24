@@ -1,7 +1,18 @@
 @use "@/shared/styles/colors.scss" as *;
 
 :host {
-  display: contents;
+  display: block;
+  position: relative;
+  z-index: 0;
+  color: $iconColor;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .input {
