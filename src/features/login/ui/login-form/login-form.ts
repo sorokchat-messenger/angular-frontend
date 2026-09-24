@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { form } from '@angular/forms/signals';
 import { RouterLink } from '@angular/router';
 import { LoginSchema, type LoginPayload } from '@sorokchat-messenger/contracts';
+import { injectLogin } from '../../api';
 
 @Component({
   selector: 'app-login-form',
@@ -13,10 +14,12 @@ import { LoginSchema, type LoginPayload } from '@sorokchat-messenger/contracts';
 })
 export class LoginForm {
   private readonly model = signal<Required<LoginPayload>>({ login: "", password: "" });
+  private readonly mutation = injectLogin();
+
   public readonly form = form(this.model, withZod(LoginSchema));
   public readonly registerPath: string = Path.REGISTER_PAGE.fullPath;
 
   public login(payload: LoginPayload): void {
-    console.log(payload);
+    this.mutation.mutate(payload);
   }
 }

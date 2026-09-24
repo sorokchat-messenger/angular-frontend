@@ -3,6 +3,7 @@ import { RegisterSchema, type RegisterPayload } from '@sorokchat-messenger/contr
 import { form } from '@angular/forms/signals';
 import { RouterLink } from '@angular/router';
 import { Button, Field, Form, Path, withZod } from '@/shared';
+import { injectRegister } from '../../api';
 
 @Component({
   selector: 'app-register-form',
@@ -13,10 +14,12 @@ import { Button, Field, Form, Path, withZod } from '@/shared';
 })
 export class RegisterForm {
   private readonly model = signal<Required<RegisterPayload>>({ login: "", password: "", displayName: '' });
+  private readonly mutation = injectRegister();
+
   protected readonly form = form(this.model, withZod(RegisterSchema));
   protected readonly loginPath: string = Path.LOGIN_PAGE.fullPath;
 
   public register(payload: RegisterPayload): void {
-    console.log(payload);
+    this.mutation.mutate(payload);
   }
 }
