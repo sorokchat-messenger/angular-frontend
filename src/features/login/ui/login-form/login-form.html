@@ -1,0 +1,7 @@
+<app-form [form]="form" (send)="login($event)">
+    <h1 class="title">Вхід</h1>
+    <app-field [field]="form.login()" label="Унікальне ім'я" placeholder="Ваше унікальне ім'я..." />
+    <app-field [field]="form.password()" type="password" label="Пароль" placeholder="Ваш пароль..." />
+    <app-button [disabled]="form().invalid()" type="submit" class="button">Увійти</app-button>
+    <div class="guide">Якщо ще не зареєстровані, <a class="accent" [routerLink]="registerPath">зареєструйтеся</a>.</div>
+</app-form>

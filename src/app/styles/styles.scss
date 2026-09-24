@@ -1,12 +1,33 @@
 @use "@/shared/styles/colors.scss" as *;
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: $primaryBackgroundColor;
+  background-color: $primaryBackgroundColor;
 }
 
+.title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 400;
+  color: $primaryTextColor;
+}
+
+.guide {
+  font-size: 20px;
+  font-weight: 400;
+  color: $primaryTextColor;
+  text-align: center;
+}
+
+.accent {
+  color: $accentColor;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
