@@ -1,0 +1,37 @@
+@use "@/shared/styles/colors.scss" as *;
+
+:host {
+  display: contents;
+}
+
+.page-loader {
+  position: fixed;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .loader {
+    width: 100px;
+    height: 100px;
+    border: 2px solid $loaderPrimaryColor;
+    border-radius: 50%;
+    border-left-color: $loaderSecondaryColor;
+    border-right-color: $loaderSecondaryColor;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

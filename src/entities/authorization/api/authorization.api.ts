@@ -7,7 +7,7 @@ import { AccessTokenStorage } from "../storage";
 
 @Service()
 export class AuthorizationService {
-    private static readonly CONTROLLER_URL: string = `/${AUTHORIZATION_CONTROLLER.NAME}`;
+    private static readonly CONTROLLER_URL: string = `http://localhost:8080/${AUTHORIZATION_CONTROLLER.NAME}`;
     private static readonly REGISTER_URL: string = `${AuthorizationService.CONTROLLER_URL}/${AUTHORIZATION_CONTROLLER.REGISTER}`;
     private static readonly LOGIN_URL: string = `${AuthorizationService.CONTROLLER_URL}/${AUTHORIZATION_CONTROLLER.LOGIN}`;
     private static readonly PROFILE_URL: string = `${AuthorizationService.CONTROLLER_URL}/${AUTHORIZATION_CONTROLLER.PROFILE}`;
