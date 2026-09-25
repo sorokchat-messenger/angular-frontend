@@ -32,9 +32,9 @@ export class AuthorizationService {
         return await lastValueFrom(this.client.get<UserPayload>(AuthorizationService.PROFILE_URL));
     }
 
-    public async refreshTokens(): Promise<void> {
+    public async refreshTokens(): Promise<AuthorizedPayload> {
         const { accessToken } = await lastValueFrom(this.client.put<AuthorizedPayload>(AuthorizationService.REFRESH_TOKENS_URL, null));
-        await this.authorize(accessToken);
+        return await this.authorize(accessToken);
     }
 
     public async logout(): Promise<void> {
@@ -42,8 +42,9 @@ export class AuthorizationService {
         await this.deauthorize();
     }
 
-    private async authorize(accessToken: string): Promise<void> {
-        return await this.accessTokenStorage.setToken(accessToken);
+    private async authorize(accessToken: string): Promise<AuthorizedPayload> {
+        await this.accessTokenStorage.setToken(accessToken);
+        return { accessToken }
     }
 
     private async deauthorize(): Promise<void> {
