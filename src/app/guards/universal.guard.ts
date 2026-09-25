@@ -16,10 +16,7 @@ export function universalGuard(protection: Protection): CanActivateFn {
         const translation: TranslateService = inject(TranslateService);
         return combineLatest([toObservable(isAuthenticatedSignal), toObservable(profile.data), toObservable(profile.status)])
             .pipe(
-                filter(([isAuthenticated]) => {
-                    if (isAuthenticated === undefined) return false;
-                    return true;
-                }),
+                filter(([isAuthenticated]) => isAuthenticated !== undefined),
                 take(1),
                 map(([isAuthenticated, user]) => {
                     switch (protection.type) {
