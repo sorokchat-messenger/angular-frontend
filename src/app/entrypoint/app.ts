@@ -12,5 +12,5 @@ import { RouterOutlet } from '@angular/router';
 export class App {
   private readonly isAuthenticated = injectIsAuthenticated();
 
-  protected readonly isLoading = computed(() => this.isAuthenticated());
+  protected readonly isLoading = computed(() => this.isAuthenticated() === undefined);
 }

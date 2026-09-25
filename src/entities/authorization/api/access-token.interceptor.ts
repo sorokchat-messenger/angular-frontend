@@ -1,10 +1,27 @@
-import { type HttpEvent, type HttpHandlerFn, type HttpInterceptorFn, type HttpRequest } from "@angular/common/http";
-import { catchError, defer, filter, finalize, from, mergeMap, shareReplay, take, throwError, type Observable } from "rxjs";
+import {
+    type HttpEvent,
+    type HttpHandlerFn,
+    type HttpInterceptorFn,
+    type HttpRequest
+} from "@angular/common/http";
+import {
+    catchError,
+    defer,
+    filter,
+    finalize,
+    from,
+    mergeMap,
+    shareReplay,
+    take,
+    tap,
+    throwError,
+    type Observable
+} from "rxjs";
 import { AccessTokenStorage } from "../storage";
 import { inject } from "@angular/core";
 import { toObservable } from "@angular/core/rxjs-interop";
 import { withJwt } from "@/shared";
-import { ErrorSchema, HttpStatus } from "@sorokchat-messenger/contracts";
+import { AUTHORIZATION_CONTROLLER, ErrorSchema, HttpStatus } from "@sorokchat-messenger/contracts";
 import { AuthorizationService } from "./authorization.api";
 
 let refresh$: Observable<{ accessToken: string }> | null = null;
@@ -17,28 +34,31 @@ function refreshOnce(service: AuthorizationService) {
     return refresh$;
 }
 
-export const accessTokenInterceptor: HttpInterceptorFn = (
-    request: HttpRequest<unknown>,
-    next: HttpHandlerFn
-): Observable<HttpEvent<unknown>> => {
-    const storage: AccessTokenStorage = inject(AccessTokenStorage);
-    const service: AuthorizationService = inject(AuthorizationService);
+export const accessTokenInterceptor: HttpInterceptorFn = (request, next) => {
+    const storage = inject(AccessTokenStorage);
+    const service = inject(AuthorizationService);
+    if (request.url.includes(AUTHORIZATION_CONTROLLER.REFRESH_TOKENS)) return next(request);
     return toObservable(storage.getToken()).pipe(
         filter(token => token !== undefined),
         take(1),
         mergeMap(token => {
-            const authorizedRequest = token ? withJwt(request, token) : request;
+            const authorizedRequest = token !== null ? withJwt(request, token) : request;
             return next(authorizedRequest).pipe(
                 catchError(error => {
                     if (!isUnauthorized(error)) return throwError(() => error);
                     return refreshOnce(service).pipe(
-                        mergeMap(({ accessToken }) => next(withJwt(request, accessToken)))
+                        mergeMap(({ accessToken }) => {
+                            return next(withJwt(request, accessToken));
+                        }),
+                        catchError(err => {
+                            return throwError(() => err);
+                        }),
                     );
-                })
+                }),
             );
-        })
+        }),
     );
-}
+};
 
 function isUnauthorized(error: unknown): boolean {
     if (typeof error !== 'object' || error === null || !('error' in error)) return false;

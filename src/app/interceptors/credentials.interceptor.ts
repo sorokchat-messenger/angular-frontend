@@ -5,7 +5,6 @@ import {
     type HttpRequest
 } from "@angular/common/http";
 import { type Observable } from "rxjs";
-
 export const credentialsInterceptor: HttpInterceptorFn = (
     request: HttpRequest<unknown>,
     next: HttpHandlerFn
