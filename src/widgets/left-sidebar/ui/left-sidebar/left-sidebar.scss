@@ -8,9 +8,18 @@
   border-right: 1px solid $borderColor;
   background-color: $secondaryBackgroundColor;
   .menu a {
-    color: $primaryTextColor;
+    display: flex;
+    flex-direction: column;
+    color: $iconColor;
     padding: 10px;
-    font-size: 20px;
-    text-decoration: none;
+    transition: .3s all ease;
+    border-radius: 10px;
+    &.active {
+      color: $primaryTextColor
+    }
+    &:hover {
+      color: $primaryTextColor;
+      background-color: $iconColor;
+    }
   }
 }

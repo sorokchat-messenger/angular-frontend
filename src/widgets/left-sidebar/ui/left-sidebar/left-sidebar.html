@@ -2,7 +2,11 @@
     <nav class="menu">
         <ul>
             @for (item of menu(); track item.path) {
-            <li><a [routerLink]="item.path">{{item.title}}</a></li>
+            <li>
+                <a [routerLink]="item.path" routerLinkActive="active">
+                    <svg [lucideIcon]="item.icon" />
+                </a>
+            </li>
             }
         </ul>
     </nav>
