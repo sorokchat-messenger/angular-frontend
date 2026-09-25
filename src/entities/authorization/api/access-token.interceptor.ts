@@ -1,9 +1,4 @@
-import {
-    type HttpEvent,
-    type HttpHandlerFn,
-    type HttpInterceptorFn,
-    type HttpRequest
-} from "@angular/common/http";
+import { type HttpInterceptorFn } from "@angular/common/http";
 import {
     catchError,
     defer,
@@ -50,8 +45,8 @@ export const accessTokenInterceptor: HttpInterceptorFn = (request, next) => {
                         mergeMap(({ accessToken }) => {
                             return next(withJwt(request, accessToken));
                         }),
-                        catchError(err => {
-                            return throwError(() => err);
+                        catchError(error => {
+                            return throwError(() => error);
                         }),
                     );
                 }),
