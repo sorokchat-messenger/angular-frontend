@@ -7,6 +7,8 @@ export class Path {
     public static readonly AUTHORIZATION_LAYOUT = new Path(AUTHORIZATION_CONTROLLER.NAME);
     public static readonly REGISTER_PAGE = new Path(AUTHORIZATION_CONTROLLER.REGISTER, Path.AUTHORIZATION_LAYOUT);
     public static readonly LOGIN_PAGE = new Path(AUTHORIZATION_CONTROLLER.LOGIN, Path.AUTHORIZATION_LAYOUT);
+    public static readonly MAIN_LAYOUT = new Path("");
+    public static readonly CHATS_PAGE = new Path("chats", this.MAIN_LAYOUT);
 
     private constructor(target: string, parent: Path | null = null) {
         this._target = Path.normalize(target);

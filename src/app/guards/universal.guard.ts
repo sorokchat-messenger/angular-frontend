@@ -25,7 +25,6 @@ export function universalGuard(protection: Protection): CanActivateFn {
                         }
                         case "anonymous": {
                             if (!isAuthenticated) return true;
-                            toast.error(translation.instant(AuthorizationCodes.ACCESS_DENIED));
                             return router.createUrlTree(["/"]);
                         }
                         case "private": {

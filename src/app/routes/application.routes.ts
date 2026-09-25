@@ -1,7 +1,13 @@
-import { Route, type Routes } from '@angular/router';
+import { type Route, type Routes } from '@angular/router';
 import { LAYOUTS } from '../layouts';
-import { Page, Layout } from '@/shared';
+import { Page, Layout, Path } from '@/shared';
 import { universalGuard } from '../guards';
+
+const INDEX_ROUTE: Route = {
+    path: Path.MAIN_LAYOUT.path,
+    pathMatch: "full",
+    redirectTo: Path.CHATS_PAGE.fullPath
+}
 
 function mapToRoutes(routes: (Layout | Page)[]): Routes {
     return routes.map(route => {
@@ -22,4 +28,4 @@ function mapToRoutes(routes: (Layout | Page)[]): Routes {
     });
 }
 
-export const APPLICATION_ROUTES: Routes = mapToRoutes(LAYOUTS);
+export const APPLICATION_ROUTES: Routes = [INDEX_ROUTE, ...mapToRoutes(LAYOUTS)];

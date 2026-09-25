@@ -1,0 +1,9 @@
+<aside class="left-sidebar">
+    <nav class="menu">
+        <ul>
+            @for (item of menu(); track item.path) {
+            <li><a [routerLink]="item.path">{{item.title}}</a></li>
+            }
+        </ul>
+    </nav>
+</aside>
