@@ -9,10 +9,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   width: 100%;
   min-height: 100dvh;
   &, app-icon {
     color: $primaryTextColor;
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    &, app-icon {
+      color: $iconColor;
+    }
   }
 }

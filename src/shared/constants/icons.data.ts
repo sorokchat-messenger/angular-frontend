@@ -12,6 +12,7 @@ import { type IconType } from "../types";
 
 export const ICON_SIZE: number = 25;
 export const PLACEHOLDER_ICON_SIZE: number = ICON_SIZE * 3;
+export const TEXT_ICON_SIZE: number = Math.floor(ICON_SIZE * 0.75);
 export const SHOW_PASSWORD_ICON: IconType = LucideEye;
 export const HIDE_PASSWORD_ICON: IconType = LucideEyeClosed;
 export const CHATS_ICON: IconType = LucideMessageCircle;
