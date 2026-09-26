@@ -1,9 +1,10 @@
-import { IconLink, type Page } from '@/shared';
+import { type Page } from '@/shared';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { SidebarMenu } from '../sidebar-menu';
 
 @Component({
   selector: 'app-left-sidebar',
-  imports: [IconLink],
+  imports: [SidebarMenu],
   templateUrl: './left-sidebar.html',
   styleUrl: './left-sidebar.scss',
   changeDetection: ChangeDetectionStrategy.Eager,

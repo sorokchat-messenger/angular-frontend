@@ -1,1 +1,9 @@
-<p>sidebar-menu works!</p>,
+<nav class="sidebar-menu">
+    <ul>
+        @for (item of menu(); track item.path) {
+        <li>
+            <app-icon-link [icon]="item.icon" [path]="item.path" />
+        </li>
+        }
+    </ul>
+</nav>

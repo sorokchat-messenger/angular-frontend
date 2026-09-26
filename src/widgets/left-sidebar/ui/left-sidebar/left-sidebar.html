@@ -1,20 +1,4 @@
 <aside class="left-sidebar">
-    <nav class="menu">
-        <ul>
-            @for (item of topMenu(); track item.path) {
-            <li>
-                <app-icon-link [icon]="item.icon" [path]="item.path" />
-            </li>
-            }
-        </ul>
-    </nav>
-    <nav class="menu">
-        <ul>
-            @for (item of bottomMenu(); track item.path) {
-            <li>
-                <app-icon-link [icon]="item.icon" [path]="item.path" />
-            </li>
-            }
-        </ul>
-    </nav>
+    <app-sidebar-menu [menu]="topMenu()" />
+    <app-sidebar-menu [menu]="bottomMenu()" />
 </aside>
