@@ -2,7 +2,6 @@
     <input [id]="name()" class="input" [type]="inputType()" [formField]="formField()" [placeholder]="placeholder()"
         [class.error]="hasErrors()" />
     @if (type() === 'password') {
-
     <app-icon class="icon" [icon]="icon()" (click)="switchType()" />
     }
 </div>

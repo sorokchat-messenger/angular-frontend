@@ -1,4 +1,4 @@
-import { CHATS_PAGE } from '@/pages';
+import { CHATS_PAGE, SETTINGS_PAGE } from '@/pages';
 import { type Page } from '@/shared';
 import { LeftSidebar } from '@/widgets';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
@@ -12,5 +12,6 @@ import { RouterOutlet } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class MainLayout {
-  protected readonly menu: Page[] = [CHATS_PAGE];
+  protected readonly topMenu: Page[] = [CHATS_PAGE];
+  protected readonly bottomMenu: Page[] = [SETTINGS_PAGE];
 }

@@ -1,15 +1,14 @@
-import { type Page } from '@/shared';
+import { IconLink, type Page } from '@/shared';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { LucideDynamicIcon } from '@lucide/angular';
 
 @Component({
   selector: 'app-left-sidebar',
-  imports: [RouterLink, RouterLinkActive, LucideDynamicIcon],
+  imports: [IconLink],
   templateUrl: './left-sidebar.html',
   styleUrl: './left-sidebar.scss',
   changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class LeftSidebar {
-  public readonly menu = input<Page[]>([]);
+  public readonly topMenu = input<Page[]>([]);
+  public readonly bottomMenu = input<Page[]>([]);
 }

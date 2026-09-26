@@ -1,11 +1,18 @@
 <aside class="left-sidebar">
     <nav class="menu">
         <ul>
-            @for (item of menu(); track item.path) {
+            @for (item of topMenu(); track item.path) {
             <li>
-                <a [routerLink]="item.path" routerLinkActive="active">
-                    <svg [lucideIcon]="item.icon" />
-                </a>
+                <app-icon-link [icon]="item.icon" [path]="item.path" />
+            </li>
+            }
+        </ul>
+    </nav>
+    <nav class="menu">
+        <ul>
+            @for (item of bottomMenu(); track item.path) {
+            <li>
+                <app-icon-link [icon]="item.icon" [path]="item.path" />
             </li>
             }
         </ul>

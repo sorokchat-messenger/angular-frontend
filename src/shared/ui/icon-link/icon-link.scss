@@ -1,0 +1,22 @@
+@use "@/shared/styles/colors.scss" as *;
+
+:host {
+  display: contents;
+}
+
+.icon-link {
+  display: flex;
+  flex-direction: column;
+  app-icon {
+    padding: 10px;
+    transition: .3s all ease;
+    border-radius: 10px;
+  }
+  &.active app-icon {
+    color: $primaryTextColor
+  }
+  &:hover app-icon {
+    color: $primaryTextColor;
+    background-color: $iconColor;
+  }
+}

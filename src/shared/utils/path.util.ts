@@ -9,6 +9,7 @@ export class Path {
     public static readonly LOGIN_PAGE = new Path(AUTHORIZATION_CONTROLLER.LOGIN, Path.AUTHORIZATION_LAYOUT);
     public static readonly MAIN_LAYOUT = new Path("");
     public static readonly CHATS_PAGE = new Path("chats", this.MAIN_LAYOUT);
+    public static readonly SETTINGS_PAGE = new Path("settings", this.MAIN_LAYOUT);
 
     private constructor(target: string, parent: Path | null = null) {
         this._target = Path.normalize(target);
