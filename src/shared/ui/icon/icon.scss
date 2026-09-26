@@ -1,0 +1,8 @@
+@use "@/shared/styles/colors.scss" as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: $iconColor;
+}

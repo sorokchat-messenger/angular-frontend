@@ -1,12 +1,14 @@
+import { HIDE_PASSWORD_ICON, SHOW_PASSWORD_ICON } from '@/shared/constants';
 import { type InputType } from '@/shared/types';
 import { ChangeDetectionStrategy, Component, computed, input, signal, Signal } from '@angular/core';
 import { Field, FormField } from '@angular/forms/signals';
 import { type FieldState } from '@angular/forms/signals';
-import { LucideDynamicIcon, LucideEye, LucideEyeClosed, type LucideIcon } from '@lucide/angular';
+import { type LucideIcon } from '@lucide/angular';
+import { Icon } from '../icon';
 
 @Component({
   selector: 'app-input',
-  imports: [FormField, LucideDynamicIcon],
+  imports: [FormField, Icon],
   templateUrl: './input.html',
   styleUrl: './input.scss',
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -18,7 +20,7 @@ export class Input {
   public readonly type = input<InputType>('text');
   public readonly field = input.required<FieldState<unknown, string | number>>();
   public readonly hasErrors = input<boolean>(false);
-  public readonly icon = computed<LucideIcon>(() => this.passwordType() === 'password' ? LucideEye : LucideEyeClosed);
+  public readonly icon = computed<LucideIcon>(() => this.passwordType() === 'password' ? SHOW_PASSWORD_ICON : HIDE_PASSWORD_ICON);
 
   public get formField(): Signal<Field<any, string | number>> {
     return computed(() => this.field as unknown as Field<any, string | number>);
