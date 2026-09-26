@@ -1,0 +1,20 @@
+@use "@/shared/styles/colors.scss" as *;
+
+:host {
+  display: block;
+}
+
+.icon-button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  app-icon {
+    transition: .3s all ease;
+  }
+  &:hover app-icon {
+    color: $primaryTextColor;
+  }
+}

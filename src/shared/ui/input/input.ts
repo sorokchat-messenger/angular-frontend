@@ -3,11 +3,11 @@ import { type IconType, type InputType } from '../../types';
 import { ChangeDetectionStrategy, Component, computed, input, signal, Signal } from '@angular/core';
 import { Field, FormField } from '@angular/forms/signals';
 import { type FieldState } from '@angular/forms/signals';
-import { Icon } from '../icon';
+import { IconButton } from '../icon-button';
 
 @Component({
   selector: 'app-input',
-  imports: [FormField, Icon],
+  imports: [FormField, IconButton],
   templateUrl: './input.html',
   styleUrl: './input.scss',
   changeDetection: ChangeDetectionStrategy.Eager,
