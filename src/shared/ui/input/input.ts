@@ -4,10 +4,11 @@ import { ChangeDetectionStrategy, Component, computed, input, signal, Signal } f
 import { Field, FormField } from '@angular/forms/signals';
 import { type FieldState } from '@angular/forms/signals';
 import { IconButton } from '../icon-button';
+import { Icon } from '../icon';
 
 @Component({
   selector: 'app-input',
-  imports: [FormField, IconButton],
+  imports: [FormField, IconButton, Icon],
   templateUrl: './input.html',
   styleUrl: './input.scss',
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -19,7 +20,8 @@ export class Input {
   public readonly type = input<InputType>('text');
   public readonly field = input.required<FieldState<unknown, string | number>>();
   public readonly hasErrors = input<boolean>(false);
-  public readonly icon = computed<IconType>(() => this.passwordType() === 'password' ? SHOW_PASSWORD_ICON : HIDE_PASSWORD_ICON);
+  public readonly icon = input<IconType>();
+  public readonly inputIcon = computed<IconType>(() => this.passwordType() === 'password' ? SHOW_PASSWORD_ICON : HIDE_PASSWORD_ICON);
 
   public get formField(): Signal<Field<any, string | number>> {
     return computed(() => this.field as unknown as Field<any, string | number>);

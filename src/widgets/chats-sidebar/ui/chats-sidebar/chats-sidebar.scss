@@ -1,0 +1,15 @@
+@use "@/shared/styles/colors.scss" as *;
+
+:host {
+  display: contents;
+}
+
+.sidebar {
+  background-color: $secondaryBackgroundColor;
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100dvh;
+  overflow-y: auto;
+}

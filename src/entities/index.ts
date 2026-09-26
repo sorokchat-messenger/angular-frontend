@@ -5,3 +5,4 @@ export {
     injectIsAuthenticated,
     accessTokenInterceptor,
 } from './authorization';
+export { ChatsPlaceholer } from './chats';

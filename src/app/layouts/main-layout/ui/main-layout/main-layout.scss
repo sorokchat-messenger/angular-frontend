@@ -5,5 +5,8 @@
 .main-layout {
   min-height: 100dvh;
   display: flex;
-  gap: 15px;
+}
+
+.page {
+  flex: 1 1 auto;
 }

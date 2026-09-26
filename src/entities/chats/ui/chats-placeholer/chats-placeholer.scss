@@ -1,0 +1,18 @@
+@use "@/shared/styles/colors.scss" as *;
+
+:host {
+  display: contents;
+}
+
+.chats-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  min-height: 100dvh;
+  &, app-icon {
+    color: $primaryTextColor;
+  }
+}

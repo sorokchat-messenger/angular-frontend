@@ -1,7 +1,12 @@
+@let relativeIcon = icon();
+
 <div class="input-wrapper">
     <input [id]="name()" class="input" [type]="inputType()" [formField]="formField()" [placeholder]="placeholder()"
         [class.error]="hasErrors()" />
     @if (type() === 'password') {
-    <app-icon-button class="icon" [icon]="icon()" (click)="switchType()" />
+    <app-icon-button class="icon" [icon]="inputIcon()" (click)="switchType()" />
+    }
+    @else if (relativeIcon !== undefined) {
+    <app-icon [icon]="relativeIcon" />
     }
 </div>

@@ -7,12 +7,17 @@
   color: $iconColor;
 }
 
-app-icon-button {
+app-icon-button, app-icon {
   position: absolute;
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
   cursor: pointer;
+  transition: .3s all ease;
+}
+
+app-icon {
+  pointer-events: none;
 }
 
 .input {
@@ -33,7 +38,7 @@ app-icon-button {
   &:focus-visible, &:focus-within, &:hover {
     outline: none;
     border-color: $primaryTextColor;
-    &, &::placeholder {
+    &, &::placeholder, & + app-icon, & {
       color: $primaryTextColor;
     }
   }
