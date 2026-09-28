@@ -90,7 +90,7 @@ Sorokchat Messenger — це веб-додаток для безпечної к�
 | Data Store |  | ✓ |  | ✓ | ✓ |  |
 | Process | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 
-Позначення: **S** - Spoofing; **T** - Tampering; **R** - Repudiation; **I** - Information Disclosure; **D** - Denial of Service; **E** - Elevation of Privilege.
+Позначення: **S** - Підміна; **T** - Зміна; **R** - Відмовлення; **I** - Витік інформації; **D** - Відмовлення обслуговування; **E** - Підвищення прав.
 
 Для кожного елемента системи заповнюються лише релевантні категорії.
 
