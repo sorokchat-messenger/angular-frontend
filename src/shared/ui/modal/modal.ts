@@ -12,7 +12,7 @@ export class Modal {
   protected readonly closeIcon: IconType = CLOSE_ICON;
   private readonly ref = inject(ModalRef);
 
-  public readonly title = input.required<string>();
+  public readonly heading = input.required<string>();
 
   protected close() {
     this.ref.close();
