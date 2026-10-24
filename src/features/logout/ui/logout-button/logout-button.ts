@@ -1,18 +1,20 @@
-import { DangerButton } from '@/shared';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Button, ModalService } from '@/shared';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { injectLogout } from '../../api';
+import { LogoutConfirm } from '../logout-confirm';
 
 @Component({
   selector: 'app-logout-button',
-  imports: [DangerButton],
+  imports: [Button],
   templateUrl: './logout-button.html',
   styleUrl: './logout-button.scss',
   changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class LogoutButton {
   private readonly mutation = injectLogout();
+  private readonly modalService = inject(ModalService);
 
   public logout(): void {
-    this.mutation.mutate();
+    this.modalService.open(LogoutConfirm);
   }
 }

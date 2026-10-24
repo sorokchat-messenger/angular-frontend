@@ -12,17 +12,52 @@
   border-radius: 10px;
   font-size: 24px;
   cursor: pointer;
-  &[type="submit"] {
-    background-color: $buttonSubmitBackroundColor;
-    color: $primaryTextColor;
-    &:hover {
+  &.filled {
+    &.success {
+      background-color: $buttonSubmitBackroundColor;
+      color: $primaryTextColor;
+      &:hover {
       background-color: $buttonSubmitHoverBackroundColor;
+      }
+    }
+    &.danger {
+      background-color: $dangerColor;
+      color: $primaryTextColor;
+      &:hover {
+      background-color: $errorTextColor;
+      }
+    }
+    &:disabled {
+      cursor: not-allowed;
+      &, &:hover {
+        background-color: $dangerColor;
+      }
     }
   }
-  &:disabled {
-    cursor: not-allowed;
-    &, &:hover {
-      background-color: $buttonDisabledBackroundColor;
+  &.outline {
+    background-color: transparent;
+    border: 1px solid transparent;
+    &.success {
+      border-color: $buttonSubmitBackroundColor;
+      color: $buttonSubmitBackroundColor;
+      &:hover {
+        color: $buttonSubmitHoverBackroundColor;
+        border-color: $buttonSubmitHoverBackroundColor;
+      }
+    }
+    &.danger {
+      border-color: $dangerColor;
+      color: $dangerColor;
+      &:hover {
+        opacity: .7;
+      }
+    }
+    &:disabled {
+      cursor: not-allowed;
+      &, &:hover {
+        border-color: $dangerColor;
+        color: $dangerColor;
+      }
     }
   }
 }

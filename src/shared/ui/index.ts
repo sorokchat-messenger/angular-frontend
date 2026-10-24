@@ -5,6 +5,5 @@ export * from './input';
 export * from './page-loader';
 export * from './icon';
 export * from './icon-link';
-export * from './danger-button';
 export * from './icon-button';
 export * from './modal';

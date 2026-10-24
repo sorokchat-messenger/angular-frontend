@@ -1,0 +1,8 @@
+<app-modal heading="Точно хочете вийти?">
+    <p>Ви точно хочете вийти із облікового запису? Зауважте, що при цьому будуть видалені усі ваші данні, включаючи,
+        чати та повідомлення</p>
+    <div class="buttons">
+        <app-button variant="outline" color="success" (click)="close()">Ні</app-button>
+        <app-button variant="outline" color="danger" (click)="logout()">Так</app-button>
+    </div>
+</app-modal>

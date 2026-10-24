@@ -4,3 +4,5 @@ export * from './protection.type';
 export * from './button-type.type';
 export * from './input-type.type';
 export * from './icon-type';
+export * from './button-variant.type';
+export * from './button-color.type';
