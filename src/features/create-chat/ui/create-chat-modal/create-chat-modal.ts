@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-create-chat',
   imports: [Modal],
-  templateUrl: './create-chat.html',
-  styleUrl: './create-chat.scss',
+  templateUrl: './create-chat-modal.html',
+  styleUrl: './create-chat-modal.scss',
 })
-export class CreateChat {
+export class CreateChatModal {
 }
