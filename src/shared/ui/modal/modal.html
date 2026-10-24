@@ -1,0 +1,9 @@
+<div class="modal">
+    <div class="head">
+        <h2 class="title">{{title()}}</h2>
+        <app-icon-button [icon]="closeIcon" (click)="close()" />
+    </div>
+    <div class="content">
+        <ng-content />
+    </div>
+</div>

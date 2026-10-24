@@ -1,5 +1,7 @@
-import { IconButton, NEW_CHAT_ICON, type IconType } from '@/shared';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CreateChat } from '@/features';
+import { IconButton, ModalService, NEW_CHAT_ICON, type IconType } from '@/shared';
+import { ModalRef } from '@/shared/utils/modal-ref';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-chats-sidebar-header',
@@ -11,7 +13,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 export class ChatsSidebarHeader {
   protected readonly newChatIcon: IconType = NEW_CHAT_ICON;
 
+  private readonly modalService = inject(ModalService);
+
   public createChat() {
-    alert("Crearate chat");
+    this.modalService.open(CreateChat);
   }
 }

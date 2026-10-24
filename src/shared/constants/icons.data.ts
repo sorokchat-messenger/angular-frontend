@@ -7,6 +7,7 @@ import {
     LucideSquarePen,
     LucideUserPlus,
     LucideUserRound,
+    LucideX,
 } from "@lucide/angular";
 import { type IconType } from "../types";
 
@@ -21,3 +22,4 @@ export const REGISTER_ICON: IconType = LucideUserPlus;
 export const SETTINGS_ICON: IconType = LucideSettings;
 export const NEW_CHAT_ICON: IconType = LucideSquarePen;
 export const SEARCH_ICON: IconType = LucideSearch;
+export const CLOSE_ICON: IconType = LucideX;

@@ -1,0 +1,27 @@
+@use "@/shared/styles/colors.scss" as *;
+
+:host {
+  display: contents;
+}
+
+.modal {
+  background-color: $secondaryBackgroundColor;
+  padding: 30px 15px;
+  border-radius: 20px;
+  width: 100%;
+  border: 1px solid $borderColor;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $borderColor;
+    gap: 15px;
+    .title {
+      font-size: 25px;
+    }
+  }
+}

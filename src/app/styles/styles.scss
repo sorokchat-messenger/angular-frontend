@@ -1,4 +1,5 @@
 @use "@/shared/styles/colors.scss" as *;
+@import "@angular/cdk/overlay-prebuilt.css";
 
 * {
   padding: 0;
@@ -8,19 +9,18 @@
 
 body {
   background-color: $primaryBackgroundColor;
+  color: $primaryTextColor;
 }
 
 .title {
   text-align: center;
   font-size: 36px;
   font-weight: 400;
-  color: $primaryTextColor;
 }
 
 .guide {
   font-size: 20px;
   font-weight: 400;
-  color: $primaryTextColor;
   text-align: center;
 }
 
@@ -38,4 +38,24 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px $secondaryBackgroundColor inset !important;
   -webkit-text-fill-color: $iconColor !important;
+}
+
+.cdk-overlay-backdrop {
+  background-color: $primaryBackdropColor;
+  opacity: 1;
+  transition: opacity 0.5s ease, display 0.5s allow-discrete;
+  @starting-style {
+    opacity: 0;
+  }
+  &.cdk-overlay-backdrop-showing {
+    opacity: 1;
+  }
+}
+
+div.cdk-overlay-popover div.cdk-overlay-pane {
+  max-width: 450px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
