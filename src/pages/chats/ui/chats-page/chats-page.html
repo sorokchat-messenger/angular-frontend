@@ -1,4 +1,9 @@
+@let currentChat = chat();
 <app-chats-sidebar />
 <section class="chats">
+    @if (currentChat === null) {
     <app-chats-placeholer />
+    } @else {
+    {{currentChat.name}}
+    }
 </section>
