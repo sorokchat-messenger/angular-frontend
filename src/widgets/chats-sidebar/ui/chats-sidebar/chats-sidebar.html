@@ -1,4 +1,10 @@
 <aside class="sidebar">
-    <app-chats-sidebar-header />
-    <app-search-chats />
+    <div class="head">
+        <app-chats-sidebar-header />
+        <app-search-chats />
+
+    </div>
+    <div class="body">
+        <app-chats-list [chats]="chats()" />
+    </div>
 </aside>

@@ -6,10 +6,17 @@
 
 .sidebar {
   background-color: $secondaryBackgroundColor;
-  padding: 5px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   height: 100dvh;
   overflow-y: auto;
+  .head {
+    padding: 5px 10px;
+  }
+  &, .head, .body {
+    display: flex;
+    flex-direction: column;
+  }
+  .head, .body {
+    gap: 10px;
+  }
 }

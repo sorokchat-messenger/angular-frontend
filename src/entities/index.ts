@@ -5,4 +5,11 @@ export {
     injectIsAuthenticated,
     accessTokenInterceptor,
 } from './authorization';
-export { ChatsPlaceholer } from './chats';
+export {
+    ChatsPlaceholer,
+    ChatsService,
+    type CreatedChat,
+    MY_CHATS_KEY,
+    injectMyChats,
+    ChatsList
+} from './chats';

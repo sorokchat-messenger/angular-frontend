@@ -1,0 +1,12 @@
+<nav class="menu">
+    <ul class="list">
+        @for(chat of chats(); track chat.id) {
+        <li>
+            <a class="item" [routerLink]="link(chat.id)">
+                <app-chats-avatar [chat]="chat" />
+                <h4 class="name">{{chat.name}}</h4>
+            </a>
+        </li>
+        }
+    </ul>
+</nav>

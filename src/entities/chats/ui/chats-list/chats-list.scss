@@ -1,0 +1,33 @@
+@use "@/shared/styles/colors.scss" as *;
+
+:host {
+  display: contents;
+}
+
+.menu {
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    li {
+      list-style: none;
+      .item {
+        color: $primaryTextColor;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        border-radius: 10px;
+        padding: 10px;
+        transition: .3s all ease;
+        &:hover {
+          background-color: $borderColor;
+        }
+        .name {
+          flex: 100% 0 1;
+        }
+      }
+    }
+  }
+}
