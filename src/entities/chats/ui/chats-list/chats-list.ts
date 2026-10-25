@@ -1,12 +1,12 @@
 import { Component, input } from '@angular/core';
 import { type ChatPayload } from '@sorokchat-messenger/contracts';
 import { ChatsAvatar } from '../chats-avatar';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Path } from '@/shared';
 
 @Component({
   selector: 'app-chats-list',
-  imports: [ChatsAvatar, RouterLink],
+  imports: [ChatsAvatar, RouterLink, RouterLinkActive],
   templateUrl: './chats-list.html',
   styleUrl: './chats-list.scss',
 })

@@ -21,8 +21,12 @@
         border-radius: 10px;
         padding: 10px;
         transition: .3s all ease;
+        border: 1px solid transparent;
         &:hover {
           background-color: $borderColor;
+        }
+        &._active {
+          border-color: $borderColor;
         }
         .name {
           flex: 100% 0 1;
