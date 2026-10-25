@@ -6,8 +6,6 @@ import { ChatPayload } from '@sorokchat-messenger/contracts';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 
-
-
 @Component({
   selector: 'app-chats-page',
   imports: [ChatsSidebar, ChatsPlaceholer],
