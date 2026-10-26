@@ -6,8 +6,7 @@
     } @else {
     <div class="chat">
         <app-chat-head [chat]="currentChat" />
-        <ul class="messages">
-        </ul>
+        <app-messages-list [chatId]="currentChat.id" />
         <app-send-message [chatId]="currentChat.id" />
     </div>
     }

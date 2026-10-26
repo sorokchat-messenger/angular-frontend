@@ -1,0 +1,8 @@
+@let chatMessages = messages();
+@if (chatMessages !== undefined && chatMessages !== null) {
+<ul class="messages">
+    @for(message of chatMessages; track message.text) {
+    <li class="message">{{message.text}}</li>
+    }
+</ul>
+}

@@ -1,13 +1,10 @@
-import { inject, Injector, Service, Signal } from "@angular/core";
+import { computed, inject, Service, Signal } from "@angular/core";
 import { type MessagePayload } from "../model";
 import { type IStorage, STORAGE_TOKEN } from "@/shared";
-import { toObservable } from "@angular/core/rxjs-interop";
-import { filter, take } from "rxjs";
 
 @Service()
 export class MessagesService {
     private readonly storage: IStorage = inject(STORAGE_TOKEN);
-    private readonly injector: Injector = inject(Injector);
 
     private static readonly STORAGE_KEY: string = "storage/chat-messages";
 
@@ -22,7 +19,7 @@ export class MessagesService {
     }
 
     public getByChat(id: string): Signal<MessagePayload[] | null | undefined> {
-        return this.storage.get<MessagePayload[]>(this.getKey(id));
+        return computed<MessagePayload[] | null | undefined>(() => this.storage.get<MessagePayload[]>(this.getKey(id))());
     }
 
     private getKey(id: string): string {

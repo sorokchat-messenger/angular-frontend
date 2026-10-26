@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { ChatsSidebar, ChatHead } from '@/widgets';
-import { ChatsPlaceholer, injectMyChats } from '@/entities';
+import { ChatsPlaceholer, injectMyChats, MessagesList } from '@/entities';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChatPayload } from '@sorokchat-messenger/contracts';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -10,7 +10,7 @@ import { SendMessage } from '@/features';
 
 @Component({
   selector: 'app-chats-page',
-  imports: [ChatsSidebar, ChatsPlaceholer, ChatHead, SendMessage],
+  imports: [ChatsSidebar, ChatsPlaceholer, ChatHead, MessagesList, SendMessage],
   templateUrl: './chats-page.html',
   styleUrl: './chats-page.scss',
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -20,9 +20,7 @@ export class ChatsPage {
   private readonly router: Router = inject(Router);
   private readonly myChats = injectMyChats({ limit: 10, offset: 0 });
 
-  private readonly chatId = toSignal(
-    this.route.paramMap.pipe(map(params => params.get('id')))
-  );
+  private readonly chatId = toSignal(this.route.paramMap.pipe(map(params => params.get('id'))));
 
   protected readonly chat = computed<ChatPayload | null>(() => {
     const id = this.chatId();

@@ -1,0 +1,10 @@
+:host {
+  display: contents;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1 0 100%;
+}

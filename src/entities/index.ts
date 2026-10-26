@@ -13,4 +13,9 @@ export {
     injectMyChats,
     ChatsList
 } from './chats';
-export * from './messages';
+export {
+    type MessagePayload,
+    MessageSchema,
+    MessagesList,
+    MessagesService
+} from './messages';
