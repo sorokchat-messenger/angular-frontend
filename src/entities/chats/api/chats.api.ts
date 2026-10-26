@@ -11,6 +11,7 @@ export class ChatsService {
     private static readonly BASE_URL: string = `${BACKEND_API_PATH}/${CHATS_CONTROLLER.NAME}`;
     private static readonly CREATE_URL: string = `${ChatsService.BASE_URL}/${CHATS_CONTROLLER.CREATE.PATH()}`;
     private static readonly ME_URL: string = ChatsService.BASE_URL;
+    private static readonly DELETE_URL = (id: string) => `${ChatsService.BASE_URL}/${CHATS_CONTROLLER.DELETE.PATH(id)}`
 
     private readonly client: HttpClient = inject(HttpClient);
 
@@ -25,5 +26,9 @@ export class ChatsService {
                 offset
             }
         }));
+    }
+
+    public async deleteChat(id: string): Promise<void> {
+        return await lastValueFrom(this.client.delete<void>(ChatsService.DELETE_URL(id)));
     }
 }

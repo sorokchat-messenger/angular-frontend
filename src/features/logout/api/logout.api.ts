@@ -14,7 +14,7 @@ export function injectLogout() {
         mutationKey: LOGOUT_KEY,
         mutationFn: () => service.logout(),
         async onSuccess() {
-            client.resetQueries({ queryKey: [PROFILE_KEY] })
+            client.resetQueries({ queryKey: [PROFILE_KEY] });
             router.navigateByUrl(Path.LOGIN_PAGE.fullPath);
         }
     }));

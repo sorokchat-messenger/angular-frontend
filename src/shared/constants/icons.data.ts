@@ -5,6 +5,7 @@ import {
     LucideSearch,
     LucideSettings,
     LucideSquarePen,
+    LucideTrash,
     LucideUserPlus,
     LucideUserRound,
     LucideX,
@@ -23,3 +24,4 @@ export const SETTINGS_ICON: IconType = LucideSettings;
 export const NEW_CHAT_ICON: IconType = LucideSquarePen;
 export const SEARCH_ICON: IconType = LucideSearch;
 export const CLOSE_ICON: IconType = LucideX;
+export const DELETE_ICON: IconType = LucideTrash;

@@ -1,3 +1,5 @@
+@use "@/shared/styles/colors.scss" as *;
+
 :host {
   display: flex;
   height: 100%;
@@ -5,4 +7,7 @@
 
 .chats {
   flex: 1 1 auto;
+  .chat {
+    padding: 10px;
+  }
 }

@@ -4,6 +4,8 @@
     @if (currentChat === null) {
     <app-chats-placeholer />
     } @else {
-    {{currentChat.name}}
+    <div class="chat">
+        <app-chat-head [chat]="currentChat" />
+    </div>
     }
 </section>
