@@ -4,12 +4,13 @@ import { ChatsPlaceholer, injectMyChats } from '@/entities';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChatPayload } from '@sorokchat-messenger/contracts';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { map, reduce } from 'rxjs';
+import { map } from 'rxjs';
 import { Path } from '@/shared';
+import { SendMessage } from '@/features';
 
 @Component({
   selector: 'app-chats-page',
-  imports: [ChatsSidebar, ChatsPlaceholer, ChatHead],
+  imports: [ChatsSidebar, ChatsPlaceholer, ChatHead, SendMessage],
   templateUrl: './chats-page.html',
   styleUrl: './chats-page.scss',
   changeDetection: ChangeDetectionStrategy.Eager,

@@ -9,5 +9,12 @@
   flex: 1 1 auto;
   .chat {
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 100dvh;
+    .messages {
+      flex: 1 0 100%;
+    }
   }
 }

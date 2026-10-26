@@ -4,3 +4,4 @@ export * from './logout';
 export * from './search-chats';
 export * from './create-chat';
 export * from './delete-chat';
+export * from './send-message';
