@@ -1,5 +1,5 @@
 import { ICON_SIZE } from '@/shared/constants';
-import { type IconType } from '@/shared/types';
+import { ButtonType, type IconType } from '@/shared/types';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Icon } from '../icon/icon';
 
@@ -13,4 +13,5 @@ import { Icon } from '../icon/icon';
 export class IconButton {
   public readonly icon = input.required<IconType>();
   public readonly size = input<number>(ICON_SIZE);
+  public readonly type = input<ButtonType>("button");
 }

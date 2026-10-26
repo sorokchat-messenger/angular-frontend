@@ -1,5 +1,8 @@
 <div class="send-message">
     <app-form [form]="form" (send)="send($event)">
-        <app-input [field]="form.text()" placeholder="Повідомлення" [icon]="icon" />
+        <div class="flex">
+            <app-input [field]="form.text()" placeholder="Повідомлення..." />
+            <app-icon-button [icon]="icon" type="submit" />
+        </div>
     </app-form>
 </div>

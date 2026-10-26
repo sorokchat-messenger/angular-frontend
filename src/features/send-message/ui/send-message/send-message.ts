@@ -1,11 +1,11 @@
-import { Form, withZod, Input, type IconType, SEND_ICON } from '@/shared';
+import { Form, withZod, Input, type IconType, SEND_ICON, IconButton } from '@/shared';
 import { Component, signal } from '@angular/core';
 import { type SendMessagePayload, SendMessageSchema } from '../../model';
 import { form } from '@angular/forms/signals';
 
 @Component({
   selector: 'app-send-message',
-  imports: [Form, Input],
+  imports: [Form, Input, IconButton],
   templateUrl: './send-message.html',
   styleUrl: './send-message.scss',
 })
