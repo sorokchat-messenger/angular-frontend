@@ -13,3 +13,4 @@ export {
     injectMyChats,
     ChatsList
 } from './chats';
+export * from './messages';

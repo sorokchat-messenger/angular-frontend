@@ -8,7 +8,7 @@
         <app-chat-head [chat]="currentChat" />
         <ul class="messages">
         </ul>
-        <app-send-message />
+        <app-send-message [chatId]="currentChat.id" />
     </div>
     }
 </section>

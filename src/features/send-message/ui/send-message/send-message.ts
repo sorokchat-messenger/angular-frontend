@@ -1,7 +1,8 @@
 import { Form, withZod, Input, type IconType, SEND_ICON, IconButton } from '@/shared';
-import { Component, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { type SendMessagePayload, SendMessageSchema } from '../../model';
 import { form } from '@angular/forms/signals';
+import { injectProfile, MessagesService } from '@/entities';
 
 @Component({
   selector: 'app-send-message',
@@ -11,10 +12,17 @@ import { form } from '@angular/forms/signals';
 })
 export class SendMessage {
   private readonly model = signal<SendMessagePayload>({ text: "" });
+  private readonly service: MessagesService = inject(MessagesService);
+  private readonly profile = injectProfile();
+
+  public readonly chatId = input.required<string>();
+
   protected readonly form = form(this.model, withZod(SendMessageSchema));
   protected readonly icon: IconType = SEND_ICON;
 
   public send(payload: SendMessagePayload): void {
-    console.log(payload);
+    const authorId = this.profile.data()!.id as unknown as string;
+    const chatId = this.chatId();
+    this.service.send({ ...payload, authorId, chatId })
   }
 }
