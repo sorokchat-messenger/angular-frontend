@@ -12,6 +12,9 @@
   .head {
     padding: 5px 10px;
   }
+  .body {
+    padding: 0 5px;
+  }
   &, .head, .body {
     display: flex;
     flex-direction: column;
