@@ -2,7 +2,14 @@
 @if (chatMessages !== undefined && chatMessages !== null) {
 <ul class="messages">
     @for(message of chatMessages; track message.text) {
-    <li class="message">{{message.text}}</li>
+    <li class="message" [class.my]="isMy(message)">
+        <div class="author">
+            <div class="avatar">{{message.authorId.at(14)}}</div>
+        </div>
+        <div class="content">
+            <p>{{message.text}}</p>
+        </div>
+    </li>
     }
 </ul>
 }

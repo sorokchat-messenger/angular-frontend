@@ -6,23 +6,15 @@ import { type IStorage, STORAGE_TOKEN } from "@/shared";
 export class MessagesService {
     private readonly storage: IStorage = inject(STORAGE_TOKEN);
 
-    private static readonly STORAGE_KEY: string = "storage/chat-messages";
+    private static readonly STORAGE_KEY: string = "storage-chat-messages";
+
+    public readonly messages = this.storage.get<MessagePayload[]>(MessagesService.STORAGE_KEY);
 
     public send(payload: MessagePayload): void {
-        const key = this.getKey(payload.chatId);
-        const currentMessages = this.storage.get<MessagePayload[]>(key)();
-        if (!currentMessages) {
-            this.storage.set(key, [payload]);
-        } else {
-            this.storage.set(key, [...currentMessages, payload]);
-        }
-    }
-
-    public getByChat(id: string): Signal<MessagePayload[] | null | undefined> {
-        return computed<MessagePayload[] | null | undefined>(() => this.storage.get<MessagePayload[]>(this.getKey(id))());
-    }
-
-    private getKey(id: string): string {
-        return `${MessagesService.STORAGE_KEY}/${id}`;
+        const currentMessages = this.messages();
+        let updatedMessages: MessagePayload[] = [];
+        if (!!currentMessages) updatedMessages = [...currentMessages];
+        updatedMessages.push(payload);
+        this.storage.set(MessagesService.STORAGE_KEY, updatedMessages);
     }
 }

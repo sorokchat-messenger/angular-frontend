@@ -1,0 +1,1 @@
+export { injectProfile } from '../api';

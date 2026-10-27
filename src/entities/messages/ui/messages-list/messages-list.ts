@@ -1,5 +1,7 @@
-import { Component, computed, inject, input } from '@angular/core';
-import { MessagesService } from '../../api';
+import { Component, input } from '@angular/core';
+import { injectMessagesByChat } from '../../api';
+import { injectProfile } from '@/entities/authorization';
+import { type MessagePayload } from '../../model';
 
 @Component({
   selector: 'app-messages-list',
@@ -8,9 +10,15 @@ import { MessagesService } from '../../api';
   styleUrl: './messages-list.scss',
 })
 export class MessagesList {
+  private readonly profile = injectProfile();
+
   public readonly chatId = input.required<string>();
 
-  private readonly service: MessagesService = inject(MessagesService);
+  protected readonly messages = injectMessagesByChat(this.chatId);
 
-  protected readonly messages = computed(() => this.service.getByChat(this.chatId())());
+  public isMy(message: MessagePayload): boolean {
+    const user = this.profile.data();
+    if (!user) return false;
+    return user.id as unknown as string === message.authorId;
+  }
 }

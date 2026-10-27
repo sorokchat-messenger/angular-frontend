@@ -9,9 +9,10 @@
   flex: 1 1 auto;
   .chat {
     padding: 10px;
-    display: flex;
-    flex-direction: column;
     gap: 10px;
-    min-height: 100dvh;
+    height: 100dvh;
+    display: grid;
+    overflow: hidden;
+    grid-template-rows: minmax(40px, max-content) auto minmax(40px, max-content);
   }
 }
