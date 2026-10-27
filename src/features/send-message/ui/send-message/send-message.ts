@@ -11,7 +11,8 @@ import { injectProfile, MessagesService } from '@/entities';
   styleUrl: './send-message.scss',
 })
 export class SendMessage {
-  private readonly model = signal<SendMessagePayload>({ text: "" });
+  private readonly initialState: SendMessagePayload = { text: "" };
+  private readonly model = signal<SendMessagePayload>(this.initialState);
   private readonly service: MessagesService = inject(MessagesService);
   private readonly profile = injectProfile();
 
@@ -23,6 +24,7 @@ export class SendMessage {
   public send(payload: SendMessagePayload): void {
     const authorId = this.profile.data()!.id as unknown as string;
     const chatId = this.chatId();
-    this.service.send({ ...payload, authorId, chatId })
+    this.service.send({ ...payload, authorId, chatId });
+    this.model.set(this.initialState);
   }
 }

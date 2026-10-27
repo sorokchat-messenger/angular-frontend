@@ -12,7 +12,7 @@
   .message {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     width: max-content;
     &.my {
       align-self: flex-end;
@@ -33,6 +33,9 @@
     }
     .content {
       font-size: 20px;
+      background-color: $secondaryBackgroundColor;
+      border-radius: 10px;
+      padding: 10px;
     }
   }
 }

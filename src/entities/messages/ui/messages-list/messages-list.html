@@ -4,7 +4,7 @@
     @for(message of chatMessages; track message.text) {
     <li class="message" [class.my]="isMy(message)">
         <div class="author">
-            <div class="avatar">{{message.authorId.at(14)}}</div>
+            <div class="avatar">{{message.authorId.at(14) || "C"}}</div>
         </div>
         <div class="content">
             <p>{{message.text}}</p>
