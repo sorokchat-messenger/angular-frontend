@@ -16,7 +16,7 @@ export function injectDeleteChat(id: () => string) {
             client.resetQueries({ queryKey: MY_CHATS_KEY });
         },
         onError(error) {
-            toast.error(translation.instant(error.message));
+            toast.error(translation.instant("errors.chats.participant.not-admin"));
         }
     }));
 }
