@@ -16,8 +16,6 @@ export function injectDeleteChat(id: () => string) {
             client.resetQueries({ queryKey: MY_CHATS_KEY });
         },
         onError(error) {
-            console.log(error);
-
             toast.error(translation.instant(error.message));
         }
     }));
