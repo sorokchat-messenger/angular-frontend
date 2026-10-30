@@ -8,7 +8,6 @@ import {
     mergeMap,
     shareReplay,
     take,
-    tap,
     throwError,
     type Observable
 } from "rxjs";
@@ -40,13 +39,13 @@ export const accessTokenInterceptor: HttpInterceptorFn = (request, next) => {
             const authorizedRequest = token !== null ? withJwt(request, token) : request;
             return next(authorizedRequest).pipe(
                 catchError(error => {
-                    if (!isUnauthorized(error)) return throwError(() => error);
+                    if (!isUnauthorized(error)) return throwError(() => error.error);
                     return refreshOnce(service).pipe(
                         mergeMap(({ accessToken }) => {
                             return next(withJwt(request, accessToken));
                         }),
                         catchError(error => {
-                            return throwError(() => error);
+                            return throwError(() => error.error);
                         }),
                     );
                 }),
