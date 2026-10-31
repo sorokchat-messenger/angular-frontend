@@ -33,7 +33,7 @@ export class SendMessage {
     const iv = await this.generation.generate(this.bytesCount);
     const key = await this.masterKeyService.ensureMasterKeyExists();
     const text = await this.encryption.encrypt(payload.text, key, { iv });
-    const signing = await this.signing.sign(payload.text, key);
+    const signing = await this.signing.sign(text, key);
     this.service.send({ ...payload, authorId, chatId, text, iv, signing });
     this.model.set(this.initialState);
   }

@@ -1,11 +1,11 @@
-import { computed, inject, resource, type Signal } from "@angular/core";
-import { MessagesService } from "./messages.api";
-import { type MessagePayload } from "../model";
 import { ENCRYPTION_TOKEN, SIGNING_TOKEN } from "@/shared";
+import { MessagesService } from "./messages.api";
 import { MasterKeyService } from "@/entities/master-key";
-import { ISigning } from "@sorokchat-messenger/cryptography-abstractions";
+import { type ISigning } from "@sorokchat-messenger/cryptography-abstractions";
+import { computed, inject, resource, Signal } from "@angular/core";
+import { MessagePayload } from "../model";
 
-export type Message = Omit<MessagePayload, "signing"> & {
+export type Message = Omit<MessagePayload, 'signing'> & {
     isSigned: boolean;
 }
 
@@ -14,6 +14,7 @@ export function injectMessagesByChat(id: () => string): Signal<Message[]> {
     const encryption = inject(ENCRYPTION_TOKEN);
     const keyService: MasterKeyService = inject(MasterKeyService);
     const signing: ISigning = inject(SIGNING_TOKEN);
+
     const decryptedMessagesResource = resource({
         params: () => ({
             chatId: id(),
@@ -21,27 +22,38 @@ export function injectMessagesByChat(id: () => string): Signal<Message[]> {
         }),
         loader: async ({ params }) => {
             const { chatId, messages } = params;
+            if (!messages || messages.length === 0) return [];
+
             const key = await keyService.ensureMasterKeyExists();
-            if (!messages || !key) return [];
-            const filterred = messages.filter(message => message.chatId === chatId);
-            return Promise.all(filterred.map(async message => {
-                let text = '[Помилка розшифрування]';
-                let isSigned = false;
-                try {
-                    text = await encryption.decrypt(message.text, key, { iv: message.iv });
-                    if (message.signing) {
-                        isSigned = await signing.verify(text, message.signing, key);
+            if (!key) return [];
+
+            const filtered = messages.filter((message) => message.chatId === chatId);
+
+            return Promise.all(
+                filtered.map(async (message) => {
+                    let decryptedText = '[Помилка розшифрування]';
+                    let isSigned = false;
+                    if (message.signing && decryptedText !== '[Помилка розшифрування]') {
+                        try {
+                            isSigned = await signing.verify(message.text, message.signing, key);
+                        } catch (signingError) {
+                            console.error(`Помилка перевірки підпису:`, signingError);
+                        }
                     }
-                } catch (error) {
-                    console.error("Помилка криптографії: ", error);
-                }
-                return {
-                    ...message,
-                    text,
-                    isSigned
-                }
-            }));
-        }
+                    try {
+                        decryptedText = await encryption.decrypt(message.text, key, { iv: message.iv });
+                    } catch (decryptError) {
+                        console.error(`Помилка розшифрування повідомлення:`, decryptError);
+                    }
+                    return {
+                        ...message,
+                        text: decryptedText,
+                        isSigned,
+                    };
+                })
+            );
+        },
     });
+
     return computed(() => decryptedMessagesResource.value() ?? []);
 }
