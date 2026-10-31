@@ -40,7 +40,7 @@ export function injectMessagesByChat(id: () => string): Signal<Message[]> {
                     }
                     if (message.signing && decryptedText !== '[Помилка розшифрування]') {
                         try {
-                            isSigned = await signing.verify(decryptedText, message.signing, key);
+                            isSigned = await signing.verify(message.text, message.signing, key);
                         } catch (signingError) {
                             console.error(`Помилка перевірки підпису:`, signingError);
                         }
