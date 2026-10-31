@@ -14,7 +14,7 @@ export function injectLogin() {
     const router: Router = inject(Router);
     const profile = injectProfile();
     const translation: TranslateService = inject(TranslateService);
-    return injectMutation<void, { error: ErrorPayload }, LoginPayload, unknown>(() => ({
+    return injectMutation<void, ErrorPayload, LoginPayload, unknown>(() => ({
         mutationKey: LOGIN_KEY,
         mutationFn: (payload: LoginPayload) => service.login(payload),
         onSuccess() {
@@ -22,7 +22,7 @@ export function injectLogin() {
             router.navigateByUrl(Path.CHATS_PAGE.fullPath);
         },
         onError(error) {
-            toast.error(translation.instant(error.error.message));
+            toast.error(translation.instant(error.message));
         }
     }));
 }

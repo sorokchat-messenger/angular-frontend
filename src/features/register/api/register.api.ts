@@ -14,7 +14,7 @@ export function injectRegister() {
     const profile = injectProfile();
     const translation: TranslateService = inject(TranslateService);
     const router: Router = inject(Router);
-    return injectMutation<void, { error: ErrorPayload }, RegisterPayload, unknown>(() => ({
+    return injectMutation<void, ErrorPayload, RegisterPayload, unknown>(() => ({
         mutationKey: REGISTER_KEY,
         mutationFn: (payload: RegisterPayload) => service.register(payload),
         onSuccess() {
@@ -22,7 +22,7 @@ export function injectRegister() {
             router.navigateByUrl(Path.CHATS_PAGE.fullPath);
         },
         onError(error) {
-            toast.error(translation.instant(error.error.message));
+            toast.error(translation.instant(error.message));
         }
     }));
 }
