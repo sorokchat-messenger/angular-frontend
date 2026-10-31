@@ -19,3 +19,5 @@ export {
     MessagesList,
     MessagesService
 } from './messages';
+
+export { MasterKeyService } from './master-key';

@@ -19,6 +19,7 @@
         "@ngx-translate/http-loader": "^18.1.0",
         "@sorokchat-messenger/contracts": "^1.0.31",
         "@sorokchat-messenger/core": "^1.0.0",
+        "@sorokchat-messenger/cryptography-client": "^1.0.5",
         "@tanstack/angular-query-experimental": "^5.105.0",
         "angular-frontend": ".",
         "ngx-sonner": "^3.1.0",
@@ -30,6 +31,7 @@
         "@angular/build": "^22.2.5",
         "@angular/cli": "^22.2.5",
         "@angular/compiler-cli": "^22.2.4",
+        "@sorokchat-messenger/cryptography-abstractions": "^1.0.4",
         "cpy-cli": "^7.0.0",
         "jsdom": "^28.1.0",
         "prettier": "^3.9.10",
@@ -458,6 +460,10 @@
     "@sorokchat-messenger/contracts": ["@sorokchat-messenger/contracts@1.0.31", "", { "dependencies": { "@vitest/coverage-v8": "^5.0.1", "reflect-metadata": "^0.2.2", "vitest": "^5.0.1", "zod": "^4.5.4" } }, "sha512-f7VLyYQn0L6EDXoRBR0qbhpQW01dZ36MCrEKs9VVGfG21wTKlA9Lde2u99E2bnLJro5H7b3eYuF9L+gPs3BMHw=="],
 
     "@sorokchat-messenger/core": ["@sorokchat-messenger/core@1.0.0", "", { "peerDependencies": { "prettier": "^3.9.6" } }, "sha512-DxKnCJ4u4TEpU25DAiuXOdY3miI8WelEzxlvCKZJbhdhwXtdqfsnl6W8dRp3HQpiE3xDZqWImkB8TmiBN31/sQ=="],
+
+    "@sorokchat-messenger/cryptography-abstractions": ["@sorokchat-messenger/cryptography-abstractions@1.0.4", "", {}, "sha512-eBtMZvwep54QyjQYTVfvIVPHNrImqEdVOI7+Em4dAGJUPS4nBdHae3SZHRgljC4ggt34WkghaHIGjue5illpMw=="],
+
+    "@sorokchat-messenger/cryptography-client": ["@sorokchat-messenger/cryptography-client@1.0.5", "", {}, "sha512-IrHQ3uYdSrSnIJcW524gWtVNvaP6boci/IEKGFi8Xe5qZAjCHIFy1W9f2KvUtWiw+eaNPBQvAcnDddLHYR3kAg=="],
 
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 

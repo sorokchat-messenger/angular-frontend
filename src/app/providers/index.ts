@@ -8,6 +8,9 @@ import { PERSISTENCE_STORAGE_PROVIDER } from './persistence.provider';
 import { STORAGE_PROVIDER } from './storage.provider';
 import { TANSTACK_PROVIDER } from './tanstack.provider';
 import { TRANSLATION_PROVIDER } from './translation.provider';
+import { ENCRYPTION_PROVIDER } from './encryption.provider';
+import { KEY_GENERATION_PROVIDER } from './key-generator.provider';
+import { KEY_BYTES_COUNT_PROVIDER } from './key-bytes-count.provider';
 
 export const PROVIDERS: (Provider | EnvironmentProviders)[] = [
   BROWSER_GLOBAL_ERROR_LISTENER_PROVIDER,
@@ -18,5 +21,8 @@ export const PROVIDERS: (Provider | EnvironmentProviders)[] = [
   PERSISTENCE_STORAGE_PROVIDER,
   STORAGE_PROVIDER,
   TANSTACK_PROVIDER,
-  TRANSLATION_PROVIDER
+  TRANSLATION_PROVIDER,
+  ENCRYPTION_PROVIDER,
+  KEY_GENERATION_PROVIDER,
+  KEY_BYTES_COUNT_PROVIDER
 ];
