@@ -11,6 +11,7 @@ import { TRANSLATION_PROVIDER } from './translation.provider';
 import { ENCRYPTION_PROVIDER } from './encryption.provider';
 import { KEY_GENERATION_PROVIDER } from './key-generator.provider';
 import { KEY_BYTES_COUNT_PROVIDER } from './key-bytes-count.provider';
+import { SIGNING_PROVIDER } from './signing.provider';
 
 export const PROVIDERS: (Provider | EnvironmentProviders)[] = [
   BROWSER_GLOBAL_ERROR_LISTENER_PROVIDER,
@@ -24,5 +25,6 @@ export const PROVIDERS: (Provider | EnvironmentProviders)[] = [
   TRANSLATION_PROVIDER,
   ENCRYPTION_PROVIDER,
   KEY_GENERATION_PROVIDER,
-  KEY_BYTES_COUNT_PROVIDER
+  KEY_BYTES_COUNT_PROVIDER,
+  SIGNING_PROVIDER
 ];

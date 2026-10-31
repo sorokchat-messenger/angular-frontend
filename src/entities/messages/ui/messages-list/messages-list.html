@@ -8,6 +8,11 @@
         </div>
         <div class="content">
             <p>{{message.text}}</p>
+            @if (isSigned(message) | async) {
+            <span>✔</span>
+            } @else {
+            <span>❌</span>
+            }
         </div>
     </li>
     }

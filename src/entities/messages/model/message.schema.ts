@@ -4,7 +4,8 @@ export const MessageSchema = z.object({
     chatId: z.uuidv7(),
     authorId: z.uuidv7(),
     text: z.string(),
-    iv: z.string()
+    iv: z.string(),
+    signing: z.string()
 });
 
 export type MessagePayload = z.infer<typeof MessageSchema>;

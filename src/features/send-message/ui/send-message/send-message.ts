@@ -1,9 +1,9 @@
-import { Form, withZod, Input, type IconType, SEND_ICON, IconButton, ENCRYPTION_TOKEN, KEY_BYTES_COUNT_TOKEN, KEY_GENERATION_TOKEN } from '@/shared';
+import { Form, withZod, Input, type IconType, SEND_ICON, IconButton, ENCRYPTION_TOKEN, KEY_BYTES_COUNT_TOKEN, KEY_GENERATION_TOKEN, SIGNING_TOKEN } from '@/shared';
 import { Component, inject, input, signal } from '@angular/core';
 import { type SendMessagePayload, SendMessageSchema } from '../../model';
 import { form } from '@angular/forms/signals';
 import { injectProfile, MasterKeyService, MessagesService } from '@/entities';
-import { type IKeyGenerator } from '@sorokchat-messenger/cryptography-abstractions';
+import { ISigning, type IKeyGenerator } from '@sorokchat-messenger/cryptography-abstractions';
 
 @Component({
   selector: 'app-send-message',
@@ -19,6 +19,7 @@ export class SendMessage {
   private readonly masterKeyService: MasterKeyService = inject(MasterKeyService);
   private readonly encryption = inject(ENCRYPTION_TOKEN);
   private readonly generation: IKeyGenerator = inject(KEY_GENERATION_TOKEN);
+  private readonly signing: ISigning = inject(SIGNING_TOKEN);
   private readonly bytesCount: number = inject(KEY_BYTES_COUNT_TOKEN);
 
   public readonly chatId = input.required<string>();
@@ -32,7 +33,8 @@ export class SendMessage {
     const iv = await this.generation.generate(this.bytesCount);
     const key = await this.masterKeyService.ensureMasterKeyExists();
     const text = await this.encryption.encrypt(payload.text, key, { iv });
-    this.service.send({ ...payload, authorId, chatId, text, iv });
+    const signing = await this.signing.sign(payload.text, key);
+    this.service.send({ ...payload, authorId, chatId, text, iv, signing });
     this.model.set(this.initialState);
   }
 }
