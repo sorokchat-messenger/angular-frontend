@@ -1,8 +1,8 @@
 import { type IStorage, KEY_BYTES_COUNT_TOKEN, KEY_GENERATION_TOKEN, STORAGE_TOKEN } from "@/shared";
-import { inject, Service, type Signal } from "@angular/core";
+import { effect, inject, Injectable, type Signal } from "@angular/core";
 import { type IKeyGenerator } from "@sorokchat-messenger/cryptography-abstractions";
 
-@Service()
+@Injectable({ providedIn: 'root' })
 export class MasterKeyService {
     private static readonly KEY: string = "master-key";
 
@@ -10,25 +10,40 @@ export class MasterKeyService {
     private readonly keyGenerator: IKeyGenerator = inject(KEY_GENERATION_TOKEN);
     private readonly keyBytesCount: number = inject(KEY_BYTES_COUNT_TOKEN);
 
-    private readonly masterKey: Signal<string | undefined | null> = this.storage.get<string>(MasterKeyService.KEY);
-    private initPromise: Promise<string> | null = null;
+    private readonly masterKey: Signal<string | null | undefined> = this.storage.get<string>(MasterKeyService.KEY);
+
+    private resolveKey!: (key: string) => void;
+    private readonly keyPromise: Promise<string> = new Promise((resolve) => {
+        this.resolveKey = resolve;
+    });
+
+    private isResolved = false;
 
     public constructor() {
-        this.ensureMasterKeyExists();
+        effect(() => {
+            if (this.isResolved) return;
+            const currentKey = this.masterKey();
+            if (currentKey === undefined) return;
+            this.isResolved = true;
+            if (currentKey) {
+                this.resolveKey(currentKey);
+                return;
+            }
+            this.generateAndSaveKey();
+        });
     }
 
-    public async ensureMasterKeyExists(): Promise<string> {
-        const currentKey = this.masterKey();
-        if (currentKey) {
-            return currentKey;
+    private async generateAndSaveKey(): Promise<void> {
+        try {
+            const newKey = await this.keyGenerator.generate(this.keyBytesCount * 2);
+            await this.storage.set<string>(MasterKeyService.KEY, newKey);
+            this.resolveKey(newKey);
+        } catch (error) {
+            console.error("Помилка генерації MasterKey:", error);
         }
-        if (!this.initPromise) {
-            this.initPromise = (async () => {
-                const newKey = await this.keyGenerator.generate(this.keyBytesCount);
-                await this.storage.set<string>(MasterKeyService.KEY, newKey);
-                return newKey;
-            })();
-        }
-        return this.initPromise;
+    }
+
+    public ensureMasterKeyExists(): Promise<string> {
+        return this.keyPromise;
     }
 }

@@ -33,17 +33,17 @@ export function injectMessagesByChat(id: () => string): Signal<Message[]> {
                 filtered.map(async (message) => {
                     let decryptedText = '[Помилка розшифрування]';
                     let isSigned = false;
-                    if (message.signing && decryptedText !== '[Помилка розшифрування]') {
-                        try {
-                            isSigned = await signing.verify(message.text, message.signing, key);
-                        } catch (signingError) {
-                            console.error(`Помилка перевірки підпису:`, signingError);
-                        }
-                    }
                     try {
                         decryptedText = await encryption.decrypt(message.text, key, { iv: message.iv });
                     } catch (decryptError) {
                         console.error(`Помилка розшифрування повідомлення:`, decryptError);
+                    }
+                    if (message.signing && decryptedText !== '[Помилка розшифрування]') {
+                        try {
+                            isSigned = await signing.verify(decryptedText, message.signing, key);
+                        } catch (signingError) {
+                            console.error(`Помилка перевірки підпису:`, signingError);
+                        }
                     }
                     return {
                         ...message,
