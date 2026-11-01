@@ -1,3 +1,4 @@
+import { injectProfile } from '@/entities';
 import { LogoutButton } from '@/features';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
@@ -8,4 +9,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './settings-page.scss',
   changeDetection: ChangeDetectionStrategy.Eager,
 })
-export class SettingsPage { }
+export class SettingsPage {
+  private readonly profile = injectProfile();
+}

@@ -1,1 +1,8 @@
+@let user = profile.data();
 <app-logout-button />
+
+@if (user) {
+<br>
+<p><strong>Користувач:</strong><span>{{user.displayName}}</span></p>
+<p><strong>Роль:</strong><span>{{user.role}}</span></p>
+}
