@@ -29,6 +29,7 @@
     "@sorokchat-messenger/cryptography-client": "^1.0.6",
     "@tanstack/angular-query-experimental": "^5.105.0",
     "angular-frontend": ".",
+    "dotenv": "^18.0.10",
     "javascript-obfuscator": "^5.10.0",
     "ngx-sonner": "^3.1.0",
     "rxjs": "~7.8.2",

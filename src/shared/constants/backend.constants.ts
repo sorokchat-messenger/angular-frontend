@@ -1,1 +1,1 @@
-export const BACKEND_API_PATH: string = "/api";
+export const BACKEND_API_PATH: string = (window as any).__env?.API_URL || '/api';
