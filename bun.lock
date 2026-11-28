@@ -19,7 +19,7 @@
         "@ngx-translate/http-loader": "^18.1.0",
         "@sorokchat-messenger/contracts": "^1.0.31",
         "@sorokchat-messenger/core": "^1.0.0",
-        "@sorokchat-messenger/cryptography-client": "^1.0.6",
+        "@sorokchat-messenger/cryptography-client": "^1.0.8",
         "@tanstack/angular-query-experimental": "^5.105.0",
         "angular-frontend": ".",
         "dotenv": "^18.0.10",
@@ -483,7 +483,7 @@
 
     "@sorokchat-messenger/cryptography-abstractions": ["@sorokchat-messenger/cryptography-abstractions@1.0.4", "", {}, "sha512-eBtMZvwep54QyjQYTVfvIVPHNrImqEdVOI7+Em4dAGJUPS4nBdHae3SZHRgljC4ggt34WkghaHIGjue5illpMw=="],
 
-    "@sorokchat-messenger/cryptography-client": ["@sorokchat-messenger/cryptography-client@1.0.6", "", {}, "sha512-7E5zNVQAkE9aB3vlmUJ9qOx9zyQs5o0qY1wq8dWmY5lofXo+Rf2MXByEOESPnhN5MAD31MZ3iXyKYRs2DsMJxQ=="],
+    "@sorokchat-messenger/cryptography-client": ["@sorokchat-messenger/cryptography-client@1.0.8", "", {}, "sha512-eFclnJMVITWfsGh3E6nm5zVcNOKx+7nnRphjJfC3MltEffWzZmcrXfDvy7Fdhj4kloc7VY8Hb26dCGKotFSzhQ=="],
 
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 
